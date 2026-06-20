@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BookStore</title>
     <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
         body
         {
-            padding: 0%;
-            margin: 0%;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
         }
 
        .navbar
 {
     width: 100%;
-    height: 70px;
+    min-height: 70px;
     background-color: rgb(248, 175, 80);
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 
-    padding: 0 30px;
+    padding: 10px 30px;
     box-sizing: border-box;
+    gap: 12px;
 }
 
 .logo-text
@@ -39,14 +48,19 @@
 {
     width: 100px;
     height: 100px;
+    max-width: 100%;
     border-radius: 50%;
 }
 
 .nav-links
 {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
     list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
 }
 
 .nav-links a
@@ -67,15 +81,19 @@
             width: 100%;
             min-height: calc(100vh - 70px);
             background-color: rgb(101, 171, 184);
-            gap: 120px;
+            gap: 60px;
+            row-gap: 60px;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            align-items: center;
+            padding: 60px 24px;
+            box-sizing: border-box;
         }
        .card1
 {
     width: 300px;
+    max-width: 100%;
     height: 500px;
     background-color: rgb(248, 175, 80);
     display: flex;
@@ -93,6 +111,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .card-img img
@@ -101,12 +120,12 @@
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    transition: all 5s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
         .card-img img:hover
         {
             border-radius: 0;
-            transform: translateY(-2px) rotatex(360deg);
+            transform: translateY(-2px) scale(1.04);
             position: relative;
             top:-20px;
 
@@ -120,6 +139,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
 
 
         }
@@ -128,6 +148,7 @@
             color: black;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size:x-large;
+            margin: 8px 0;
 
 
 
@@ -139,6 +160,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
             /* background-color: antiquewhite; */
 
 
@@ -150,12 +172,6 @@
 
         }
         /* ════════════════════════════════════════
-   CONTACT SECTION — Book Store
-   Self-contained styles, scoped under .contact-section
-   so they don't clash with the rest of your site.
-═════════════════════════════════════════ */
-
-/* ════════════════════════════════════════
    CONTACT SECTION — Book Store
    Self-contained styles, scoped under .contact-section
    so they don't clash with the rest of your site.
@@ -181,6 +197,8 @@
   color: var(--cs-text);
   padding: 100px 24px 140px;   /* generous bottom space reserved for footer */
   box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
 }
 
 .contact-section *,
@@ -253,6 +271,7 @@
   padding: 44px 38px;
   box-shadow: var(--cs-shadow);
   transition: transform var(--cs-trans), box-shadow var(--cs-trans);
+  min-width: 0;
 }
 
 .contact-card:hover {
@@ -362,6 +381,7 @@
 
 .btn-send svg {
   transition: transform var(--cs-trans);
+  flex-shrink: 0;
 }
 
 .btn-send:hover {
@@ -385,6 +405,7 @@
   flex-direction: column;
   gap: 22px;
   margin-bottom: 8px;
+  padding: 0;
 }
 
 .info-item {
@@ -421,6 +442,7 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
+  min-width: 0;
 }
 
 .info-text strong {
@@ -436,6 +458,7 @@
   font-weight: 400;
   color: var(--cs-text);
   line-height: 1.5;
+  word-break: break-word;
 }
 
 /* ── Social Media Block ── */
@@ -457,6 +480,7 @@
 
 .social-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -501,7 +525,7 @@
   transition: background var(--cs-trans), color var(--cs-trans), transform var(--cs-trans), box-shadow var(--cs-trans);
 }
 
-.btn-browse svg { transition: transform var(--cs-trans); }
+.btn-browse svg { transition: transform var(--cs-trans); flex-shrink: 0; }
 
 .btn-browse:hover {
   background: #1a1a1a;
@@ -520,33 +544,12 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Responsive: Tablet ── */
-@media (max-width: 860px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  .contact-section {
-    padding: 80px 20px 110px;
-  }
-}
-
-/* ── Responsive: Mobile ── */
-@media (max-width: 480px) {
-  .contact-card {
-    padding: 32px 24px;
-  }
-  .contact-heading {
-    margin-bottom: 48px;
-  }
-}
 /* ════════════════════════════════════════
    FOOTER SECTION — Book Store
    Scoped under .site-footer; uses the same
    teal/orange/dark token system as the rest
    of the site, so it flows on naturally.
 ═════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .site-footer {
   --ft-bg:        #14171f;
@@ -566,6 +569,8 @@
   color: var(--ft-text);
   padding: 72px 40px 0;
   box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
 }
 
 .site-footer *,
@@ -586,6 +591,7 @@
 .footer-col {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 /* ── Brand Column ── */
@@ -623,6 +629,7 @@
 
 .footer-social {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -789,7 +796,14 @@
   font-style: italic;
 }
 
-/* ── Responsive: Tablet ── */
+/* ════════════════════════════════════════
+   RESPONSIVE MEDIA QUERIES
+   Breakpoints: Tablet ≤ 860px, Mobile ≤ 480px
+   Covers navbar, book cards, contact section,
+   and footer as one consistent system.
+═════════════════════════════════════════ */
+
+/* ── Large tablet / small desktop (≤ 1024px) ── */
 @media (max-width: 1024px) {
   .footer-main {
     grid-template-columns: 1fr 1fr 1fr;
@@ -803,11 +817,49 @@
   }
 }
 
-/* ── Responsive: Mobile ── */
-@media (max-width: 640px) {
-  .site-footer {
-    padding: 56px 24px 0;
+/* ── Tablet (≤ 860px) ── */
+@media (max-width: 860px) {
+
+  /* Navbar: stack logo/links neatly, keep usable tap targets */
+  .navbar {
+    justify-content: center;
+    text-align: center;
+    padding: 14px 20px;
   }
+  .logo-text {
+    font-size: 28px;
+  }
+  .center-logo img {
+    width: 70px;
+    height: 70px;
+  }
+  .nav-links {
+    width: 100%;
+    gap: 18px 22px;
+  }
+  .nav-links a {
+    font-size: 17px;
+  }
+
+  /* Book cards: allow two-up wrapping with smaller gap */
+  .card {
+    gap: 36px;
+    padding: 48px 20px;
+  }
+  .card1 {
+    width: 280px;
+    height: 480px;
+  }
+
+  /* Contact section: single column */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-section {
+    padding: 80px 20px 110px;
+  }
+
+  /* Footer: single column */
   .footer-main {
     grid-template-columns: 1fr 1fr;
     row-gap: 38px;
@@ -816,6 +868,76 @@
   .footer-newsletter {
     grid-column: 1 / -1;
   }
+}
+
+/* ── Mobile (≤ 600px) ── */
+@media (max-width: 600px) {
+
+  .navbar {
+    height: auto;
+    padding: 14px 16px;
+  }
+  .logo-text {
+    font-size: 24px;
+  }
+  .center-logo img {
+    width: 56px;
+    height: 56px;
+  }
+  .nav-links {
+    gap: 14px 18px;
+    font-size: 0;
+  }
+  .nav-links a {
+    font-size: 15px;
+  }
+
+  /* Book cards: full-width single column */
+  .card {
+    gap: 32px;
+    padding: 40px 16px;
+  }
+  .card1 {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    min-height: 460px;
+    padding: 16px;
+  }
+  .card-img {
+    height: 200px;
+  }
+  .card-tittle h1 {
+    font-size: 1.3rem;
+  }
+  .card-desc p {
+    font-size: 0.9rem;
+  }
+
+  /* Contact section tightened spacing */
+  .contact-section {
+    padding: 64px 16px 90px;
+  }
+  .contact-heading {
+    margin-bottom: 44px;
+  }
+  .contact-heading h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ── Small mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 32px 24px;
+  }
+  .contact-heading {
+    margin-bottom: 48px;
+  }
+
+  .site-footer {
+    padding: 56px 20px 0;
+  }
   .footer-bottom {
     flex-direction: column;
     text-align: center;
@@ -823,13 +945,16 @@
   }
 }
 
+/* ── Very small mobile (≤ 420px) ── */
 @media (max-width: 420px) {
   .footer-main {
     grid-template-columns: 1fr;
   }
+  .card1 {
+    height: auto;
+    min-height: 440px;
+  }
 }
-
-
 
 
     </style>
@@ -861,7 +986,7 @@
                 <img src="congerdesign-book-3964050_1920.jpg" alt="">
             </div>
             <div class="card-tittle" >
-               <b><h1>The Silent Reader</h1></b> 
+               <h1>The Silent Reader</h1>
             </div>
             <div class="card-desc">
                 <p>A captivating novel that explores the power of knowledge, imagination, and self-discovery through an unforgettable journey of personal growth.</p>
@@ -892,15 +1017,10 @@
             </div>
             </div>
 
-
-
-
-
         </div>
-        </div>
+
        <!-- ════════════════════════════════════════
      CONTACT SECTION — Book Store
-     Paste this directly below your existing content
 ═════════════════════════════════════════ -->
 <section class="contact-section">
 
@@ -1033,9 +1153,9 @@
   </div>
 
 </section>
+
 <!-- ════════════════════════════════════════
      FOOTER SECTION — Book Store
-     Paste directly below the Contact Us section
 ═════════════════════════════════════════ -->
 <footer class="site-footer">
 
